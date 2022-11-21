@@ -3,4 +3,4 @@ project(laba2)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(laba2 main.cpp)
+add_executable(laba2 main.cpp src/utils.h)

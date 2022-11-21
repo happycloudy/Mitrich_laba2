@@ -1,6 +1,9 @@
 #include <iostream>
+#include "./src/utils.h"
 
 int main() {
-    std::cout << "Hello, World!" << std::endl;
+
+    parallelStarter();
+
     return 0;
 }
