@@ -10,6 +10,8 @@
 #include <iterator>
 #include <vector>
 #include <numeric>
+#include <omp.h>
+#include <ctime>
 
 double genNumbers() {
     static std::mt19937 gen(time(nullptr));
@@ -22,23 +24,29 @@ int calculation(std::vector <int> vec) {
     return sum_of_elements;
 }
 
-void parallelStarter() {
-    const unsigned vec_size = 1000;
+void parallelStarter(int treads) {
+    const unsigned vec_size = 10000000;
     const int num_of_vectors = 8;
+    omp_set_num_threads(treads);
+
     std::vector<std::vector<int> > vec;
-    std::generate_n(std::back_inserter(vec), num_of_vectors,
-    [num_of_vectors]() -> std::vector<int>
+    std::generate_n(std::back_inserter(vec), num_of_vectors, [num_of_vectors]() -> std::vector<int>
     {
         std::vector<int> myVec;
         std::generate_n(std::back_inserter(myVec), vec_size, []() { return genNumbers(); });
         return myVec;
     });
+    unsigned int start_time =  clock();
 
-    std::for_each(vec.begin(), vec.end(), [](std::vector<int> iVec) {
-        auto sum = calculation(iVec);
+    #pragma omp parallel for default(none) shared(num_of_vectors, vec, std::cout)
+    for (const auto& vecItem: vec) {
+        auto sum = calculation(vecItem);
+        #pragma omp critical
         std::cout << sum << std::endl;
-    });
+    }
 
+    unsigned int end_time = clock();
+    std::cout << "Time - " << (end_time - start_time) / 1000.0;
 }
 
 #endif //LABA2_UTILS_H

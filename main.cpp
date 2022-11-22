@@ -1,9 +1,7 @@
-#include <iostream>
 #include "./src/utils.h"
 
 int main() {
-
-    parallelStarter();
+    parallelStarter(1);
 
     return 0;
 }
