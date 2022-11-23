@@ -1,6 +1,6 @@
 #include "../src/parallelStarter.h"
 
 int main() {
-    parallelStarter(1);
+    parallelStarter(4);
     return 0;
 }
