@@ -9,8 +9,14 @@
 #include <vector>
 #include <numeric>
 
-int calculation(std::vector <int> vec) {
-    auto sum_of_elements = std::accumulate(vec.begin(), vec.end(), 0);
+int calculation(const std::vector <int>& vec) {
+
+    int sum_of_elements = 0;
+
+    for (auto& vecItem: vec) {
+        sum_of_elements += vecItem;
+    }
+
     return sum_of_elements;
 }
 
