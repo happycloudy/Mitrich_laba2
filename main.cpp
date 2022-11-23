@@ -1,4 +1,4 @@
-#include "./src/utils.h"
+#include "./src/parallelStarter.h"
 
 int main() {
     parallelStarter(1);
