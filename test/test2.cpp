@@ -1,11 +1,6 @@
-//
-// Created by arion on 23.11.2022.
-//
-
-#include <cassert>
+#include "../src/parallelStarter.h"
 
 int main() {
-    assert(1 == 2);
-
+    parallelStarter(2);
     return 0;
 }
