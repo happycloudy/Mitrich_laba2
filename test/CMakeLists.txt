@@ -4,6 +4,10 @@ set(intTest_source intTest.cpp)
 add_executable(intTest ${intTest_source})
 add_test(IntTest intTest)
 
+set(resultTest_source resultTest.cpp)
+add_executable(resultTest ${resultTest_source})
+add_test(ResultTest resultTest)
+
 set(test1_source test1.cpp)
 add_executable(test1 ${test1_source})
 add_test(RunTest1 test1)
